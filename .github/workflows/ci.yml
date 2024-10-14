@@ -1,0 +1,24 @@
+name: Test API Server
+
+# This specifies that the workflow will run on pushes to the api-server-development-stable branch
+on:
+  push:
+    branches:
+      - main-stable
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12.3'  # Change to your required version
+
+      - name: Run tests
+        run: python3 test.py  # Run your test script
+
